@@ -9,4 +9,10 @@ use Nette;
 
 final class HomepagePresenter extends Nette\Application\UI\Presenter
 {
+	protected function startup(): void
+	{
+		parent::startup();
+
+		throw new \Exception('This is demo');
+	}
 }
