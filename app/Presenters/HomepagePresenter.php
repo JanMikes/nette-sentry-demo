@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Presenters;
 
 use Nette;
+use Tracy\Debugger;
 
 
 final class HomepagePresenter extends Nette\Application\UI\Presenter
@@ -13,6 +14,10 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter
 	{
 		parent::startup();
 
-		throw new \Exception('This is demo');
+		try {
+			throw new \Exception('This is demo!');
+		} catch (\Exception $e) {
+			Debugger::log($e, Debugger::CRITICAL);
+		}
 	}
 }

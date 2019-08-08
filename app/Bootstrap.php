@@ -13,8 +13,9 @@ class Bootstrap
 	{
 		$configurator = new Configurator;
 
-		//$configurator->setDebugMode('23.75.345.200'); // enable for your remote IP
 		$configurator->enableTracy(__DIR__ . '/../log');
+
+		\Sentry\init(['dsn' => 'https://xyz@sentry.io/1480147']);
 
 		$configurator->setTimeZone('Europe/Prague');
 		$configurator->setTempDirectory(__DIR__ . '/../temp');
