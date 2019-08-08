@@ -1,4 +1,3 @@
-parameters:
 
 
 application:
@@ -10,6 +9,15 @@ application:
 session:
 	expiration: 14 days
 
+parameters:
+	sentry:
+		dsn: '' # Change this in your local.neon
+		in_app_exclude:
+			- %appDir%/../vendor/
+			- %appDir%/../temp/
+		project_root: %appDir%/../
+		send_default_pii: true
 
 services:
+	tracy.logger: App\Logging\SentryDecoratedTracyLogger(%sentry%)
 	router: App\Router\RouterFactory::createRouter
